@@ -32,3 +32,11 @@ class Mineral(models.Model):
 											choices=OptionsRegion.choices,
 											blank=None,
 											default='unknown')
+
+class Proyects(models.Model):
+	name		= models.CharField(max_length=50,blank=False, default='unknown')
+	Firma		= models.CharField(max_length=50,blank=False, default='unknown')
+	Group		= models.TextField(blank=True, default='unknown')
+	main_res	= models.CharField(max_length=20,blank=None, default='Copper')
+	region 		= models.TextField(blank=True, default='Around there')
+	life_cycle	= models.FloatField()
