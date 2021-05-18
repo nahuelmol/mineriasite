@@ -12,14 +12,14 @@ class Interprise(models.Model):
 class Mineral(models.Model):
 	class OptionsRegion(models.TextChoices):
 		unknown		= 'unknown'
-		Occidente 	= 'Region Occidental'
-		Centro		= 'Region Central'
-		Oriente		= 'Region Oriental'
+		Occident 	= 'West Region'
+		Center		= 'Region Central'
+		Orient		= 'East Region'
 
 	class OptionsType(models.TextChoices):
 		unknown			= 'unknown'
-		metalífero		= 'metalífero'
-		nometalífero	= 'nometalífero'
+		Metalífero		= 'metalífero'
+		Nometalífero	= 'nometalífero'
 	
 	name				= models.CharField(max_length=20)
 	typeof				= models.CharField(	max_length=15,
@@ -40,3 +40,27 @@ class Proyects(models.Model):
 	main_res	= models.CharField(max_length=20,blank=None, default='Copper')
 	region 		= models.TextField(blank=True, default='Around there')
 	life_cycle	= models.FloatField()
+
+
+class Region(models.Model):
+
+	class ClimateOptions(models.TextChoices):
+		unknown		= 'unknown'
+		Arid 		= 'Arido'
+		Dry			= 'Seco'
+		Humid		= 'Humedo'
+
+	class Embossments(models.TextChoices):
+		unknown		= 'unknown'
+		Plain		= 'llano'
+		Mountain	= 'Montañoso'
+		Desert		= 'Desierto'
+
+
+	climate		= models.CharField(	max_length=50,
+									choices=ClimateOptions.choices, 
+									default='unknown')
+	altitude	= models.FloatField()
+	embossment	= models.CharField(	max_length=50,
+									choices=Embossments.choices, 
+									default='unknown')

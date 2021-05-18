@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.views import View
 
-# Create your views here.
+class Homepage(View):
+
+	def get(self,request):
+		context = {'data':'data_example'}
+		return render(request,'db/homepage.html',context)
+

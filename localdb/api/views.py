@@ -1,5 +1,6 @@
 from localdb.models import Interprise, Mineral, Proyects
-from localdb.api.serializer import InterpriseSerializer, MineralSerializer, ProyectsSerializer
+from localdb.api.serializer import InterpriseSerializer, MineralSerializer
+from localdb.api.serializer import ProyectsSerializer, RegionsSerializer
 
 from rest_framework.response import Response
 from rest_framework import viewsets
@@ -25,4 +26,11 @@ class ProyectsView(viewsets.ViewSet):
 	def list(self):
 		queryset		= Proyects.objects.all()
 		serialized		= ProyectsSerializer(queryset,many=True)
+		return Response(serialized.data)
+
+class RegionsView(viewsets.ViewSet):
+	@staticmethod
+	def list(self):
+		queryset		= Region.objects.all()
+		serialized		= RegionsSerializer(queryset,many=True)
 		return Response(serialized.data)
